@@ -2,9 +2,6 @@ package com.github.zulhilmizainuddin.httpurlconnectionwrapper;
 
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public final class HttpGet extends Http {
 
@@ -20,6 +17,10 @@ public final class HttpGet extends Http {
             connection.setRequestMethod(HttpVerb.GET);
 
             responseCode = connection.getResponseCode();
+
+            retrieveResponseBody();
+            retrieveResponseCookies();
+            retrieveRedirectUrl();
         }
         finally {
             connection.disconnect();

@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.CookieStore;
 import java.net.HttpCookie;
 import java.net.HttpURLConnection;
@@ -115,6 +116,33 @@ public abstract class Http {
 
     public String getRedirectUrl() {
         return response.getRedirectUrl();
+    }
+
+    protected void retrieveResponseBody() throws IOException {
+        StreamConverter streamConverter =
+                StreamConverterFactory.getConverter(connection.getContentEncoding());
+
+        try {
+            InputStream inputStream = connection.getInputStream();
+            if (inputStream != null) {
+                response.setResponseBody(streamConverter.convert(inputStream));
+            }
+        }
+        catch (IOException inputStreamException) {
+            try {
+                InputStream errorStream = connection.getErrorStream();
+                if (errorStream != null) {
+                    response.setResponseBody(streamConverter.convert(errorStream));
+                }
+            }
+            catch (IOException errorStreamException) {
+                throw errorStreamException;
+            }
+        }
+    }
+
+    public String getResponseBody() {
+        return response.getResponseBody();
     }
 
     public abstract int execute() throws IOException;
