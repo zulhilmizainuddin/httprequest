@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.CookieStore;
 import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -14,13 +15,12 @@ import java.util.Map;
 public abstract class Http {
     protected final HttpURLConnection connection;
 
-    private final HttpParameter parameter;
+    private final HttpParameter parameter = new HttpParameter();
+    private final HttpResponse response = new HttpResponse();
 
     public Http(String url) throws IOException {
         URL requestUrl = new URL(url);
         connection = (HttpURLConnection) requestUrl.openConnection();
-
-        parameter = new HttpParameter();
     }
 
     public Http setRequestHeaders(Map<String, String> requestHeaders) {
@@ -90,6 +90,31 @@ public abstract class Http {
         connection.setInstanceFollowRedirects(parameter.getFollowRedirects());
 
         return this;
+    }
+
+    protected void retrieveResponseCookies() {
+        List<String> cookiesHeader = connection.getHeaderFields().get("Set-Cookie");
+        if (cookiesHeader != null) {
+            for (String cookie : cookiesHeader) {
+               response.getCookieManager().getCookieStore().add(null, HttpCookie.parse(cookie).get(0));
+            }
+        }
+    }
+
+    public CookieStore getResponseCookies() {
+        return response.getCookieManager().getCookieStore();
+    }
+
+    protected void retrieveRedirectUrl() {
+        List<String> locationHeader = connection.getHeaderFields().get("Location");
+        if (locationHeader != null)
+        {
+            response.setRedirectUrl(locationHeader.get(0));
+        }
+    }
+
+    public String getRedirectUrl() {
+        return response.getRedirectUrl();
     }
 
     public abstract int execute() throws IOException;
