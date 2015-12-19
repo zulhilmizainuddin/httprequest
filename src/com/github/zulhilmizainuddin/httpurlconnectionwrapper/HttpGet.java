@@ -7,6 +7,7 @@ public final class HttpGet extends Http {
 
     public HttpGet(String url) throws IOException {
         super(url);
+        connection.setRequestMethod(HttpVerb.GET);
     }
 
     @Override
@@ -14,8 +15,6 @@ public final class HttpGet extends Http {
         int responseCode = -1;
 
         try {
-            connection.setRequestMethod(HttpVerb.GET);
-
             responseCode = connection.getResponseCode();
 
             retrieveRedirectUrl();
