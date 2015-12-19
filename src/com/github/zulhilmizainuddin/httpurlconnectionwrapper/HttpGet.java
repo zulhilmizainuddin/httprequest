@@ -18,9 +18,9 @@ public final class HttpGet extends Http {
 
             responseCode = connection.getResponseCode();
 
-            retrieveResponseBody();
-            retrieveResponseCookies();
             retrieveRedirectUrl();
+            retrieveResponseCookies();
+            retrieveResponseBody();
         }
         finally {
             connection.disconnect();

@@ -5,17 +5,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class StreamConverterFactory {
-    private static final Map<String, StreamConverter> encodingTypeMap = new HashMap<>();
+    private static final Map<String, Class<?>> encodingTypeMap = new HashMap<>();
 
     static {
-        encodingTypeMap.put("", new StringStreamConverter());
-        encodingTypeMap.put("gzip", new GzipStreamConverter());
+        encodingTypeMap.put("", StringStreamConverter.class);
+        encodingTypeMap.put("gzip", GzipStreamConverter.class);
     }
 
     public static StreamConverter getConverter(String encodingType) {
         if (encodingType == null)
             encodingType = "";
 
-        return encodingTypeMap.get(encodingType.toLowerCase());
+        StreamConverter streamConverter = null;
+
+        try {
+            streamConverter =
+                    (StreamConverter)encodingTypeMap.get(encodingType.toLowerCase())
+                                                    .newInstance();
+        }
+        catch (InstantiationException | IllegalAccessException ex) {}
+
+        return streamConverter;
     }
 }

@@ -122,6 +122,9 @@ public abstract class Http {
         StreamConverter streamConverter =
                 StreamConverterFactory.getConverter(connection.getContentEncoding());
 
+        if (streamConverter == null)
+            throw new IOException("Failed to get stream converter");
+
         try {
             InputStream inputStream = connection.getInputStream();
             if (inputStream != null) {
