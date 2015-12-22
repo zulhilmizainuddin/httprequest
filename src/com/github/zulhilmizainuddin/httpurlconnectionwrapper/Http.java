@@ -16,55 +16,42 @@ import java.util.Map;
 public abstract class Http {
     protected final HttpURLConnection connection;
 
-    private final HttpParameter parameter = new HttpParameter();
+    protected final HttpParameter parameter = new HttpParameter();
     private final HttpResponse response = new HttpResponse();
 
-    public Http(String url) throws IOException {
+    protected Http(String url) throws IOException {
         URL requestUrl = new URL(url);
         connection = (HttpURLConnection) requestUrl.openConnection();
     }
 
-    public Http setRequestHeaders(Map<String, String> requestHeaders) {
-        if (requestHeaders != null) {
-            parameter.setRequestHeaders(requestHeaders);
-
+    protected void setRequestHeaders() {
+        if (parameter.getRequestHeaders() != null) {
             for (Map.Entry<String, String> header: parameter.getRequestHeaders().entrySet()) {
                 connection.setRequestProperty(header.getKey(), header.getValue());
             }
         }
-
-        return this;
     }
 
-    public Http setCookies(List<HttpCookie> cookies) {
-        if (cookies != null) {
-            parameter.setCookies(cookies);
-
+    protected void setCookies() {
+        if (parameter.getCookies() != null) {
             connection.setRequestProperty("Cookie", TextUtils.join(";", parameter.getCookies()));
         }
-
-        return this;
     }
 
-    public Http setConnectionTimeout(int connectionTimeout) {
-        parameter.setConnectionTimeout(connectionTimeout);
-
-        connection.setConnectTimeout(parameter.getConnectionTimeout());
-
-        return this;
+    protected void setConnectionTimeout() {
+        if (parameter.getConnectionTimeout() != 0) {
+            connection.setConnectTimeout(parameter.getConnectionTimeout());
+        }
     }
 
-    public Http setReadTimeout(int readTimeout) {
-        parameter.setReadTimeout(readTimeout);
-
-        connection.setReadTimeout(parameter.getReadTimeout());
-
-        return this;
+    protected void setReadTimeout() {
+        if (parameter.getReadTimeout() != 0) {
+            connection.setReadTimeout(parameter.getReadTimeout());
+        }
     }
 
-    public Http setRequestBody(Map<String, String> requestBody) throws IOException {
-        if (requestBody != null) {
-            parameter.setRequestBody(requestBody);
+    protected void setRequestBody() throws IOException {
+        if (parameter.getRequestBody() != null) {
 
             connection.setDoOutput(true);
 
@@ -81,16 +68,12 @@ public abstract class Http {
             outputStream.flush();
             outputStream.close();
         }
-
-        return this;
     }
 
-    public Http setFollowRedirects(boolean followRedirects) {
-        parameter.setFollowRedirects(followRedirects);
-
-        connection.setInstanceFollowRedirects(parameter.getFollowRedirects());
-
-        return this;
+    protected void setFollowRedirects() {
+        if (!parameter.getFollowRedirects()) {
+            connection.setInstanceFollowRedirects(parameter.getFollowRedirects());
+        }
     }
 
     protected void retrieveResponseCookies() {
