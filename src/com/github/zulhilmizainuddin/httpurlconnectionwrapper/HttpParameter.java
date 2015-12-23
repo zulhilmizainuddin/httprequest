@@ -10,7 +10,7 @@ public final class HttpParameter {
     private List<HttpCookie> cookies;
     private int connectionTimeout;
     private int readTimeout;
-    private Map<String, String> requestBody;
+    private String requestBody;
     private boolean followRedirects;
 
     public Map<String, String> getRequestHeaders() {
@@ -45,11 +45,11 @@ public final class HttpParameter {
         this.readTimeout = readTimeout;
     }
 
-    public Map<String, String> getRequestBody() {
+    public String getRequestBody() {
         return requestBody;
     }
 
-    public void setRequestBody(Map<String, String> requestBody) {
+    public void setRequestBody(String requestBody) {
         this.requestBody = requestBody;
     }
 

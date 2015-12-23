@@ -38,7 +38,7 @@ public final class HttpGet extends Http implements HttpBuilder {
     }
 
     @Override
-    public Http setRequestBody(Map<String, String> requestBody) {
+    public Http setRequestBody(String requestBody) {
         throw new UnsupportedOperationException("Not supported for HTTP GET");
     }
 

@@ -38,7 +38,7 @@ public final class HttpPost extends Http implements HttpBuilder {
     }
 
     @Override
-    public Http setRequestBody(Map<String, String> requestBody) {
+    public Http setRequestBody(String requestBody) {
         parameter.setRequestBody(requestBody);
         return this;
     }

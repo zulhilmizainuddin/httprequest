@@ -10,6 +10,6 @@ public interface HttpBuilder {
     Http setCookies(List<HttpCookie> cookies);
     Http setConnectionTimeout(int connectionTimeout);
     Http setReadTimeout(int readTimeout);
-    Http setRequestBody(Map<String, String> requestBody);
+    Http setRequestBody(String requestBody);
     Http setFollowRedirects(boolean followRedirects);
 }

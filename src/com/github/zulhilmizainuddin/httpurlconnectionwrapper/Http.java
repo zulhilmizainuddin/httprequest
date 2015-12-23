@@ -51,19 +51,10 @@ public abstract class Http {
 
     protected void setRequestBody() throws IOException {
         if (parameter.getRequestBody() != null) {
-
             connection.setDoOutput(true);
 
-            StringBuilder requestBodyBuilder = new StringBuilder();
-            for (Map.Entry<String, String> data: parameter.getRequestBody().entrySet()) {
-                requestBodyBuilder.append(String.format("%s=%s&", data.getKey(), data.getValue()));
-            }
-
-            requestBodyBuilder.deleteCharAt(requestBodyBuilder.length() - 1);
-
             DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
-            outputStream.writeBytes(requestBodyBuilder.toString());
-
+            outputStream.writeBytes(parameter.getRequestBody());
             outputStream.flush();
             outputStream.close();
         }
