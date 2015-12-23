@@ -6,6 +6,7 @@ Supports HTTP GET and POST set/get of:
 
     Request headers
     Request body
+    Response headers
     Response body (uncompressed, gzip)
     Request cookies
     Response cookies
