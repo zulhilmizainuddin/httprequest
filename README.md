@@ -1,23 +1,33 @@
 # httpurlconnectionwrapper
 HttpUrlConnection wrapper for Android written in Java.
 
-## Functionality
-Provides wrappers for the following HTTP requests:
+Wrappers for:
 
     HTTP GET
     HTTP POST
     HTTP PUT
     HTTP DELETE
 
-With getters and setters of:
+## Usage
+HTTP GET
 
-    Request headers
-    Request body
-    Response headers
-    Response body (uncompressed, gzip)
-    Request cookies
-    Response cookies
-    Connection timeout
-    Read timeout
-    Redirect URL
+    Http httpGet = new HttpGet("https://httpbin.org/get");
+    int responseCode = httpGet.execute();
+    
+HTTP POST
+
+    Http httpPost = new HttpPost("https://httpbin.org/post");
+    int responseCode = httpPost.setRequestBody("username=user&password=passwd")
+                               .execute();
+                            
+HTTP PUT
+
+    Http httpPut = new HttpPut("https://httpbin.org/put");
+    int responseCode = httpPut.setRequestBody("username=user&password=passwd")
+                               .execute();
   
+HTTP DELETE
+
+    Http httpDelete = new HttpDelete("https://httpbin.org/delete?user");
+    int responseCode = httpDelete.execute();
+    
