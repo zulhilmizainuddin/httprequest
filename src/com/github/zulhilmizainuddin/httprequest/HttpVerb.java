@@ -1,4 +1,4 @@
-package com.github.zulhilmizainuddin.httpurlconnectionwrapper;
+package com.github.zulhilmizainuddin.httprequest;
 
 
 public final class HttpVerb {

@@ -1,4 +1,4 @@
-package com.github.zulhilmizainuddin.httpurlconnectionwrapper;
+package com.github.zulhilmizainuddin.httprequest;
 
 
 import java.io.IOException;
@@ -6,11 +6,11 @@ import java.net.HttpCookie;
 import java.util.List;
 import java.util.Map;
 
-public final class HttpPost extends Http {
+public final class HttpPut extends Http {
 
-    public HttpPost(String url) throws IOException {
+    public HttpPut(String url) throws IOException {
         super(url);
-        connection.setRequestMethod(HttpVerb.POST);
+        connection.setRequestMethod(HttpVerb.PUT);
     }
 
     @Override

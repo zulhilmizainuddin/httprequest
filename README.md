@@ -1,4 +1,4 @@
-# httpurlconnectionwrapper
+# httprequest
 HttpUrlConnection wrapper for Android written in Java.
 
 Wrappers for:

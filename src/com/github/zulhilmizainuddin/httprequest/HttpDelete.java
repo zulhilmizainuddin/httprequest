@@ -1,4 +1,4 @@
-package com.github.zulhilmizainuddin.httpurlconnectionwrapper;
+package com.github.zulhilmizainuddin.httprequest;
 
 
 import java.io.IOException;
@@ -6,11 +6,11 @@ import java.net.HttpCookie;
 import java.util.List;
 import java.util.Map;
 
-public final class HttpGet extends Http {
+public final class HttpDelete extends Http {
 
-    public HttpGet(String url) throws IOException {
+    public HttpDelete(String url) throws IOException {
         super(url);
-        connection.setRequestMethod(HttpVerb.GET);
+        connection.setRequestMethod(HttpVerb.DELETE);
     }
 
     @Override
@@ -39,7 +39,7 @@ public final class HttpGet extends Http {
 
     @Override
     public Http setRequestBody(String requestBody) {
-        throw new UnsupportedOperationException("Not supported for HTTP GET");
+        throw new UnsupportedOperationException("Not supported for HTTP DELETE");
     }
 
     @Override
