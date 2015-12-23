@@ -80,13 +80,13 @@ public abstract class Http {
         List<String> cookiesHeader = connection.getHeaderFields().get("Set-Cookie");
         if (cookiesHeader != null) {
             for (String cookie : cookiesHeader) {
-               response.getCookieManager().getCookieStore().add(null, HttpCookie.parse(cookie).get(0));
+                response.getCookies().add(HttpCookie.parse(cookie).get(0));
             }
         }
     }
 
-    public CookieStore getResponseCookies() {
-        return response.getCookieManager().getCookieStore();
+    public List<HttpCookie> getResponseCookies() {
+        return response.getCookies();
     }
 
     protected void retrieveRedirectUrl() {

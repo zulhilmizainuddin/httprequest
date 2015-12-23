@@ -1,15 +1,17 @@
 package com.github.zulhilmizainuddin.httpurlconnectionwrapper;
 
 
-import java.net.CookieManager;
+import java.net.HttpCookie;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class HttpResponse {
-    private final CookieManager cookieManager = new CookieManager();
+    private final List<HttpCookie> cookies = new ArrayList<>();
     private String redirectUrl = "";
     private String responseBody = "";
 
-    public CookieManager getCookieManager() {
-        return cookieManager;
+    public List<HttpCookie> getCookies() {
+        return cookies;
     }
 
     public String getRedirectUrl() {
