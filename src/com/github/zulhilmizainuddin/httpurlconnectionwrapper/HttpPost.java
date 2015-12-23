@@ -63,8 +63,9 @@ public final class HttpPost extends Http implements HttpBuilder {
 
             responseCode = connection.getResponseCode();
 
-            retrieveRedirectUrl();
+            retrieveResponseHeaders();
             retrieveResponseCookies();
+            retrieveRedirectUrl();
             retrieveResponseBody();
         }
         finally {

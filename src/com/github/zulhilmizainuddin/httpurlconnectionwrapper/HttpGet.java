@@ -61,8 +61,9 @@ public final class HttpGet extends Http implements HttpBuilder {
 
             responseCode = connection.getResponseCode();
 
-            retrieveRedirectUrl();
+            retrieveResponseHeaders();
             retrieveResponseCookies();
+            retrieveRedirectUrl();
             retrieveResponseBody();
         }
         finally {

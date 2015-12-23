@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.CookieStore;
 import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -76,6 +75,17 @@ public abstract class Http {
         }
     }
 
+    protected void retrieveResponseHeaders() {
+        Map<String, List<String>> headers = connection.getHeaderFields();
+        if (headers != null) {
+            response.getHeaders().putAll(headers);
+        }
+    }
+
+    public Map<String, List<String>> getResponseHeaders() {
+        return response.getHeaders();
+    }
+
     protected void retrieveResponseCookies() {
         List<String> cookiesHeader = connection.getHeaderFields().get("Set-Cookie");
         if (cookiesHeader != null) {
@@ -111,14 +121,14 @@ public abstract class Http {
         try {
             InputStream inputStream = connection.getInputStream();
             if (inputStream != null) {
-                response.setResponseBody(streamConverter.convert(inputStream));
+                response.setBody(streamConverter.convert(inputStream));
             }
         }
         catch (IOException inputStreamException) {
             try {
                 InputStream errorStream = connection.getErrorStream();
                 if (errorStream != null) {
-                    response.setResponseBody(streamConverter.convert(errorStream));
+                    response.setBody(streamConverter.convert(errorStream));
                 }
             }
             catch (IOException errorStreamException) {
@@ -128,7 +138,7 @@ public abstract class Http {
     }
 
     public String getResponseBody() {
-        return response.getResponseBody();
+        return response.getBody();
     }
 
     public abstract int execute() throws IOException;

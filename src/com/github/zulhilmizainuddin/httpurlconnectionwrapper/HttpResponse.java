@@ -3,12 +3,19 @@ package com.github.zulhilmizainuddin.httpurlconnectionwrapper;
 
 import java.net.HttpCookie;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class HttpResponse {
+    private final Map<String, List<String>> headers = new HashMap<>();
     private final List<HttpCookie> cookies = new ArrayList<>();
     private String redirectUrl = "";
-    private String responseBody = "";
+    private String body = "";
+
+    public Map<String, List<String>> getHeaders() {
+        return headers;
+    }
 
     public List<HttpCookie> getCookies() {
         return cookies;
@@ -22,11 +29,11 @@ public final class HttpResponse {
         this.redirectUrl = redirectUrl;
     }
 
-    public String getResponseBody() {
-        return responseBody;
+    public String getBody() {
+        return body;
     }
 
-    public void setResponseBody(String responseBody) {
-        this.responseBody = responseBody;
+    public void setBody(String body) {
+        this.body = body;
     }
 }
