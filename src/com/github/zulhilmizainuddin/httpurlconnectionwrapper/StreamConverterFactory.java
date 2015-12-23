@@ -23,7 +23,8 @@ public final class StreamConverterFactory {
                     (StreamConverter)encodingTypeMap.get(encodingType.toLowerCase())
                                                     .newInstance();
         }
-        catch (InstantiationException | IllegalAccessException ex) {}
+        catch (InstantiationException ex) {}
+        catch (IllegalAccessException ex) {}
 
         return streamConverter;
     }
