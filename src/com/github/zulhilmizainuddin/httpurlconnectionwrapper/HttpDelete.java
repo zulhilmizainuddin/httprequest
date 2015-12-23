@@ -6,7 +6,7 @@ import java.net.HttpCookie;
 import java.util.List;
 import java.util.Map;
 
-public final class HttpDelete extends Http implements HttpBuilder {
+public final class HttpDelete extends Http {
 
     public HttpDelete(String url) throws IOException {
         super(url);

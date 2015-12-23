@@ -6,7 +6,7 @@ import java.net.HttpCookie;
 import java.util.List;
 import java.util.Map;
 
-public final class HttpPost extends Http implements HttpBuilder {
+public final class HttpPost extends Http {
 
     public HttpPost(String url) throws IOException {
         super(url);

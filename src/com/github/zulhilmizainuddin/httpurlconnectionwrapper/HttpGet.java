@@ -6,7 +6,7 @@ import java.net.HttpCookie;
 import java.util.List;
 import java.util.Map;
 
-public final class HttpGet extends Http implements HttpBuilder {
+public final class HttpGet extends Http {
 
     public HttpGet(String url) throws IOException {
         super(url);

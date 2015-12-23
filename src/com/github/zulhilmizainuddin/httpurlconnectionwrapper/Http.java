@@ -132,5 +132,12 @@ public abstract class Http {
         return response.getBody();
     }
 
+    public abstract Http setRequestHeaders(Map<String, String> requestHeaders);
+    public abstract Http setCookies(List<HttpCookie> cookies);
+    public abstract Http setConnectionTimeout(int connectionTimeout);
+    public abstract Http setReadTimeout(int readTimeout);
+    public abstract Http setRequestBody(String requestBody);
+    public abstract Http setFollowRedirects(boolean followRedirects);
+
     public abstract int execute() throws IOException;
 }
