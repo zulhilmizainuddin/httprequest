@@ -17,14 +17,14 @@ HTTP GET
 HTTP POST
 
     Http httpPost = new HttpPost("https://httpbin.org/post");
-    int responseCode = httpPost.setRequestBody("username=user&password=passwd")
+    int responseCode = httpPost.setBody("username=user&password=passwd")
                                .execute();
                             
 HTTP PUT
 
     Http httpPut = new HttpPut("https://httpbin.org/put");
-    int responseCode = httpPut.setRequestBody("username=user&password=passwd")
-                               .execute();
+    int responseCode = httpPut.setBody("username=user&password=passwd")
+                              .execute();
   
 HTTP DELETE
 
