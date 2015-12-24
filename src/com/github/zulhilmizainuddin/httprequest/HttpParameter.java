@@ -2,13 +2,14 @@ package com.github.zulhilmizainuddin.httprequest;
 
 
 import java.net.HttpCookie;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public final class HttpParameter {
     private final Map<String, String> requestHeaders = new HashMap<>();
-    private List<HttpCookie> cookies;
+    private final List<HttpCookie> cookies = new ArrayList<>();
     private int connectionTimeout;
     private int readTimeout;
     private String requestBody;
@@ -30,8 +31,12 @@ public final class HttpParameter {
         return cookies;
     }
 
+    public void setCookie(HttpCookie httpCookie) {
+        cookies.add(httpCookie);
+    }
+
     public void setCookies(List<HttpCookie> cookies) {
-        this.cookies = cookies;
+        this.cookies.addAll(cookies);
     }
 
     public int getConnectionTimeout() {

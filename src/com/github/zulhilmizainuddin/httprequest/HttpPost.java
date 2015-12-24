@@ -26,6 +26,12 @@ public final class HttpPost extends Http {
     }
 
     @Override
+    public Http setCookie(HttpCookie httpCookie) {
+        parameter.setCookie(httpCookie);
+        return this;
+    }
+
+    @Override
     public Http setCookies(List<HttpCookie> cookies) {
         parameter.setCookies(cookies);
         return this;

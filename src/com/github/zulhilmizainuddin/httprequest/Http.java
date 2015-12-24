@@ -134,6 +134,7 @@ public abstract class Http {
 
     public abstract Http setRequestHeader(String key, String value);
     public abstract Http setRequestHeaders(Map<String, String> requestHeaders);
+    public abstract Http setCookie(HttpCookie httpCookie);
     public abstract Http setCookies(List<HttpCookie> cookies);
     public abstract Http setConnectionTimeout(int connectionTimeout);
     public abstract Http setReadTimeout(int readTimeout);
