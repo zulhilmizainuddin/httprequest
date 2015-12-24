@@ -14,6 +14,12 @@ public final class HttpGet extends Http {
     }
 
     @Override
+    public Http setRequestHeader(String key, String value) {
+        parameter.setRequestHeader(key, value);
+        return this;
+    }
+
+    @Override
     public Http setRequestHeaders(Map<String, String> requestHeaders) {
         parameter.setRequestHeaders(requestHeaders);
         return this;
