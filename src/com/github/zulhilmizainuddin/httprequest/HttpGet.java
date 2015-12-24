@@ -14,20 +14,20 @@ public final class HttpGet extends Http {
     }
 
     @Override
-    public Http setRequestHeader(String key, String value) {
+    public Http setHeader(String key, String value) {
         parameter.setRequestHeader(key, value);
         return this;
     }
 
     @Override
-    public Http setRequestHeaders(Map<String, String> requestHeaders) {
-        parameter.setRequestHeaders(requestHeaders);
+    public Http setHeaders(Map<String, String> headers) {
+        parameter.setRequestHeaders(headers);
         return this;
     }
 
     @Override
-    public Http setCookie(HttpCookie httpCookie) {
-        parameter.setCookie(httpCookie);
+    public Http setCookie(HttpCookie cookie) {
+        parameter.setCookie(cookie);
         return this;
     }
 
@@ -50,7 +50,7 @@ public final class HttpGet extends Http {
     }
 
     @Override
-    public Http setRequestBody(String requestBody) {
+    public Http setBody(String body) {
         throw new UnsupportedOperationException("Not supported for HTTP GET");
     }
 
