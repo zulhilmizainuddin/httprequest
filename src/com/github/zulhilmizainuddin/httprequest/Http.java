@@ -1,8 +1,6 @@
 package com.github.zulhilmizainuddin.httprequest;
 
 
-import android.text.TextUtils;
-
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,7 +31,14 @@ public abstract class Http {
 
     protected void setCookies() {
         if (parameter.getCookies() != null) {
-            connection.setRequestProperty("Cookie", TextUtils.join(";", parameter.getCookies()));
+            StringBuilder cookiesBuilder = new StringBuilder();
+            for (HttpCookie cookie: parameter.getCookies()) {
+                cookiesBuilder.append(String.format("%s=%s;", cookie.getName(), cookie.getValue()));
+            }
+
+            String cookies = cookiesBuilder.toString().replaceAll(";$", "");
+
+            connection.setRequestProperty("Cookie", cookies);
         }
     }
 

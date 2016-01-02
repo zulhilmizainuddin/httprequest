@@ -1,5 +1,5 @@
 # httprequest
-HttpUrlConnection wrapper for Android written in Java.
+Simple and easy to use HttpUrlConnection wrapper for Java and Android.
 
 Wrappers for:
 
