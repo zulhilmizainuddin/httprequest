@@ -1,4 +1,4 @@
-# httprequest
+# httprequest [![Build Status](https://travis-ci.org/zulhilmizainuddin/httprequest.svg?branch=master)](https://travis-ci.org/zulhilmizainuddin/httprequest)
 Simple and easy to use HttpUrlConnection wrapper for Java and Android.
 
 Wrappers for:
