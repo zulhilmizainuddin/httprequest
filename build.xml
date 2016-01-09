@@ -1,0 +1,17 @@
+<project>
+    <target name="clean">
+        <delete dir="out"/>
+    </target>
+
+    <target name="build">
+        <mkdir dir="out/production/httprequest"/>
+        <javac srcdir="src" destdir="out/production/httprequest"/>
+    </target>
+
+    <target name="jar">
+        <mkdir dir="out/artifacts/httprequest_jar"/>
+        <jar destfile="out/artifacts/httprequest_jar/httprequest.jar"
+             basedir="out/production/httprequest"
+             includes="com/github/zulhilmizainuddin/httprequest/**"/>
+    </target>
+</project>
