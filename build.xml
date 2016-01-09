@@ -14,9 +14,4 @@
              basedir="out/production/httprequest"
              includes="com/github/zulhilmizainuddin/httprequest/**"/>
     </target>
-
-    <target name="test">
-        <antcall target="build"/>
-        <antcall target="jar"/>
-    </target>
 </project>
