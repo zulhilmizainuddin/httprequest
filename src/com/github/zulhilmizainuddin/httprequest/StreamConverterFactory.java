@@ -10,6 +10,7 @@ public final class StreamConverterFactory {
     static {
         encodingTypeMap.put("", StringStreamConverter.class);
         encodingTypeMap.put("gzip", GzipStreamConverter.class);
+        encodingTypeMap.put("deflate", DeflateStreamConverter.class);
     }
 
     public static StreamConverter getConverter(String encodingType) {
