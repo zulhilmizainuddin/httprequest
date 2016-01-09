@@ -8,6 +8,11 @@ Wrappers for:
     HTTP PUT
     HTTP DELETE
 
+## Build
+Install Ant. Run the following command to build the jar file:
+
+    ant build jar
+
 ## Usage
 HTTP GET
 
