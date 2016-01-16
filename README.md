@@ -58,14 +58,15 @@ int responseCode = httpDelete.execute();
 try {
     Http http = new HttpPost("http://httpbin.org/post");
 
-    int responseCode = http.setHeader("Accept-Encoding", "gzip, deflate")
-                           .setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36")
-                           .setCookie(new HttpCookie("csrftoken", "951157e1fecfce6d8f9f52587ee27f2a"))
-                           .setConnectionTimeout(15000)
-                           .setReadTimeout(15000)
-                           .setFollowRedirects(true)
-                           .setBody("username=user&password=passwd")
-                           .execute();
+    int responseCode =
+            http.setHeader("Accept-Encoding", "gzip, deflate")
+                .setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36")
+                .setCookie(new HttpCookie("csrftoken", "951157e1fecfce6d8f9f52587ee27f2a"))
+                .setConnectionTimeout(15000)
+                .setReadTimeout(15000)
+                .setFollowRedirects(true)
+                .setBody("username=user&password=passwd")
+                .execute();
 
     Map<String, List<String>> responseHeaders;
     List<HttpCookie> responseCookies;
