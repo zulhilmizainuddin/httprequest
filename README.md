@@ -14,6 +14,7 @@ Simple, easy to use HttpUrlConnection wrapper for Java and Android.
 - Connection timeout
 - Read timeout
 - Follow redirects
+- Redirect URL
 
 ## Build
 Install Ant. Run the following command to build the jar file:
