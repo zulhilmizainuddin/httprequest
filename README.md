@@ -1,12 +1,19 @@
 # httprequest [![Build Status](https://travis-ci.org/zulhilmizainuddin/httprequest.svg?branch=master)](https://travis-ci.org/zulhilmizainuddin/httprequest)
-Simple and easy to use HttpUrlConnection wrapper for Java and Android.
+Simple, easy to use HttpUrlConnection wrapper for Java and Android.
 
-Wrappers for:
+**Wrappers for:**
+- HTTP GET
+- HTTP POST
+- HTTP PUT
+- HTTP DELETE
 
-    HTTP GET
-    HTTP POST
-    HTTP PUT
-    HTTP DELETE
+**With setters and getters for:**
+- HTTP headers
+- HTTP body (uncompressed, gzip, deflate)
+- Cookies
+- Connection timeout
+- Read timeout
+- Follow redirects
 
 ## Build
 Install Ant. Run the following command to build the jar file:
@@ -16,23 +23,31 @@ Install Ant. Run the following command to build the jar file:
 ## Usage
 HTTP GET
 
-    Http httpGet = new HttpGet("https://httpbin.org/get");
-    int responseCode = httpGet.execute();
+```java
+Http httpGet = new HttpGet("https://httpbin.org/get");
+int responseCode = httpGet.execute();
+```
     
 HTTP POST
 
-    Http httpPost = new HttpPost("https://httpbin.org/post");
-    int responseCode = httpPost.setBody("username=user&password=passwd")
-                               .execute();
+```java
+Http httpPost = new HttpPost("https://httpbin.org/post");
+int responseCode = httpPost.setBody("username=user&password=passwd")
+                           .execute();
+```
                             
 HTTP PUT
 
-    Http httpPut = new HttpPut("https://httpbin.org/put");
-    int responseCode = httpPut.setBody("username=user&password=passwd")
-                              .execute();
+```java
+Http httpPut = new HttpPut("https://httpbin.org/put");
+int responseCode = httpPut.setBody("username=user&password=passwd")
+                          .execute();
+```                          
   
 HTTP DELETE
 
-    Http httpDelete = new HttpDelete("https://httpbin.org/delete?user");
-    int responseCode = httpDelete.execute();
+```java
+Http httpDelete = new HttpDelete("https://httpbin.org/delete?user");
+int responseCode = httpDelete.execute();
+```
     
