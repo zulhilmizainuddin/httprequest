@@ -1,17 +1,21 @@
-<project>
+<project name="httprequest" basedir=".">
+
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="jar.dir" value="${build.dir}/jar"/>
+
     <target name="clean">
-        <delete dir="out"/>
+        <delete dir="${build.dir}"/>
     </target>
 
     <target name="build">
-        <mkdir dir="out/production/httprequest"/>
-        <javac srcdir="src" destdir="out/production/httprequest"/>
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
     </target>
 
-    <target name="jar">
-        <mkdir dir="out/artifacts/httprequest_jar"/>
-        <jar destfile="out/artifacts/httprequest_jar/httprequest.jar"
-             basedir="out/production/httprequest"
-             includes="com/github/zulhilmizainuddin/httprequest/**"/>
+    <target name="jar" depends="build">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}"/>
     </target>
 </project>
