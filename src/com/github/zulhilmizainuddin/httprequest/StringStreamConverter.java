@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public final class StringStreamConverter implements StreamConverter {
+final class StringStreamConverter implements StreamConverter {
     @Override
     public String convert(InputStream inputStream) throws IOException {
         if (inputStream == null)

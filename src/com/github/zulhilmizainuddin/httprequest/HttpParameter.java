@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class HttpParameter {
+final class HttpParameter {
     private final Map<String, String> requestHeaders = new HashMap<>();
     private final List<HttpCookie> cookies = new ArrayList<>();
     private int connectionTimeout;

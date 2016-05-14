@@ -4,7 +4,7 @@ package com.github.zulhilmizainuddin.httprequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class StreamConverterFactory {
+final class StreamConverterFactory {
     private static final Map<String, Class<?>> encodingTypeMap = new HashMap<>();
 
     static {

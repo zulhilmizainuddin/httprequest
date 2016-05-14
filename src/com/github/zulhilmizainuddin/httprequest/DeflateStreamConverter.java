@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.zip.InflaterInputStream;
 
-public final class DeflateStreamConverter implements StreamConverter {
+final class DeflateStreamConverter implements StreamConverter {
     @Override
     public String convert(InputStream inputStream) throws IOException {
         if (inputStream == null)

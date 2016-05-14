@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class HttpResponse {
+final class HttpResponse {
     private final Map<String, List<String>> headers = new HashMap<>();
     private final List<HttpCookie> cookies = new ArrayList<>();
     private String redirectUrl = "";
