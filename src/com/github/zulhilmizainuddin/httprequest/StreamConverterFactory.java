@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 final class StreamConverterFactory {
-    private static final Map<String, Class<?>> encodingTypeMap = new HashMap<>();
+    private static final Map<String, Class<? extends StreamConverter>> encodingTypeMap = new HashMap<>();
 
     static {
         encodingTypeMap.put("", StringStreamConverter.class);
@@ -20,9 +20,7 @@ final class StreamConverterFactory {
         StreamConverter streamConverter = null;
 
         try {
-            streamConverter =
-                    (StreamConverter)encodingTypeMap.get(encodingType.toLowerCase())
-                                                    .newInstance();
+            streamConverter = encodingTypeMap.get(encodingType.toLowerCase()).newInstance();
         }
         catch (InstantiationException ex) {}
         catch (IllegalAccessException ex) {}
